@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "496360288124",
+    "project_id": "studybuddy-927b7",
+    "storage_bucket": "studybuddy-927b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496360288124:android:c177186c267287aaa67ef9",
+        "android_client_info": {
+          "package_name": "com.example.projecte"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ_AyTGVOZa6aHBslOGGpNWntOzLru5Ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
