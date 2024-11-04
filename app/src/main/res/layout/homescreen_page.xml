@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homescreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8BFD8"
+    tools:context=".HomeScreenActivity">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:background="#4B0082"
+        android:text="@string/headerName"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:text="@string/nameT"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:padding="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="90dp"
+        />
+
+    <Button
+        android:id="@+id/myGroups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/groups"
+        android:backgroundTint="#D3D3D3"
+        android:textColor="#666666"
+        android:textSize="35sp"
+        android:padding="25dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+
+        />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:backgroundTint="#D3D3D3"
+        android:textColor="#666666"
+        android:textSize="20sp"
+        android:padding="12dp"
+        android:layout_marginTop="270dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myGroups"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
