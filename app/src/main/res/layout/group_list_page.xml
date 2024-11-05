@@ -13,6 +13,20 @@
         android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="back_arrow"
+            android:onClick="back"
+            android:paddingBottom="8dp"
+            android:src="@drawable/back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/group_header_text"
             android:layout_width="wrap_content"
@@ -21,8 +35,9 @@
             android:layout_height="wrap_content"
             android:textSize="32sp"
             android:text="Groups"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
