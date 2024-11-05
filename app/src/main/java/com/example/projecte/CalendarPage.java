@@ -1,5 +1,6 @@
 package com.example.projecte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -71,5 +72,7 @@ public class CalendarPage extends AppCompatActivity {
     }
 
     public void resources(View view) {
+        Intent intent = new Intent(CalendarPage.this, ResourcePage.class);
+        startActivity(intent);
     }
 }
