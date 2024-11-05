@@ -5,14 +5,14 @@
     android:id="@+id/signup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8BFD8"
+    android:background="#EEE8F4"
     tools:context=".SignupActivity">
 
     <TextView
         android:id="@+id/header"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
-        android:background="#4B0082"
+        android:background="@drawable/header"
         android:text="@string/headerName"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:text="Sign Up"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="50sp"
         android:gravity="center"
         android:padding="16dp"
