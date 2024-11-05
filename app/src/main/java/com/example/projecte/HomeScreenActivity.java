@@ -36,5 +36,15 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             }
         });
+
+        Button myGroups = findViewById(R.id.myGroups);
+        myGroups.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, GroupListPage.class);
+                startActivity(intent);
+            }
+        });
+
     }
     }

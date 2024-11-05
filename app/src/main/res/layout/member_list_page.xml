@@ -82,7 +82,7 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:gravity="center"
-
+            android:onClick="openChat"
             />
         <View
             android:layout_width="2dp"
@@ -97,6 +97,7 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:gravity="center"
+            android:onClick="openCalendar"
             />
         <View
             android:layout_width="2dp"
@@ -110,8 +111,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center"
-
-
+            android:onClick="openNewSession"
             />
 
     </LinearLayout>

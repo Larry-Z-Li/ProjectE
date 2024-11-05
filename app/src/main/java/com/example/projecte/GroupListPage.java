@@ -1,5 +1,6 @@
 package com.example.projecte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Group;
 
 import com.example.projecte.components.GroupListAdapter;
 
@@ -32,13 +34,19 @@ public class GroupListPage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(GroupListPage.this,"clicked group", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GroupListPage.this, MemberListPage.class);
+                startActivity(intent);
             }
         });
     }
 
     public void onNewGroupClick(View view)
     {
+        // TODO: Delete the placeholder message
         Toast.makeText(GroupListPage.this,"clicked new group", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(GroupListPage.this, NewGroupPage.class);
+        startActivity(intent);
     }
 
 }

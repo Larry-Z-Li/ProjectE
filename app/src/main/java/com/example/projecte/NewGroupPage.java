@@ -1,5 +1,6 @@
 package com.example.projecte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -70,7 +71,7 @@ public class NewGroupPage extends AppCompatActivity {
 
     public void back(View view)
     {
-
+        finish();
     }
 
     public void submit(View view)
