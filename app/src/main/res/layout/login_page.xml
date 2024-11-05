@@ -7,21 +7,30 @@
     android:layout_height="match_parent"
     android:background="#D8BFD8"
     tools:context=".LoginActivity">
-    <TextView
-        android:id="@+id/header"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sub_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:background="#4B0082"
-        android:text="@string/headerName"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/header"
+        android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Study Buddy"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/loginText"
@@ -33,7 +42,7 @@
         android:gravity="center"
         android:padding="16dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/sub_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="115dp"

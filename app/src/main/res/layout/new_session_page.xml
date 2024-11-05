@@ -79,8 +79,8 @@
             android:id="@+id/picker_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/location">
 
             <nl.joery.timerangepicker.TimeRangePicker
@@ -161,11 +161,11 @@
 
 
         <ListView
-            android:nestedScrollingEnabled="true"
             android:id="@+id/users_list"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:layout_marginTop="20dp"
+            android:nestedScrollingEnabled="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/invite_users" />
 
@@ -181,7 +181,7 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
-
+            android:onClick="submit"
             android:text="Submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -189,9 +189,10 @@
 
         <TextView
             android:id="@+id/submit_error"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:textColor="@color/red"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button" />

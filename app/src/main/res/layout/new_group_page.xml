@@ -22,11 +22,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="50dp"
             android:contentDescription="back_arrow"
+            android:onClick="back"
             android:paddingBottom="8dp"
             android:src="@drawable/back_arrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="back"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/new_group_header"
@@ -71,8 +71,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:text=""
-        android:textSize="16dp"
         android:textColor="@color/red"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/group_name" />
 
@@ -94,32 +94,34 @@
         android:layout_height="400dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/invite_users" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/users_list"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/users_list" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="Submit"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/users_list"
         android:layout_marginTop="50dp"
-        />
+        android:onClick="submit"
+
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/users_list" />
 
     <TextView
         android:id="@+id/submit_error"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
         android:layout_height="50dp"
         android:textColor="@color/red"
-        app:layout_constraintTop_toBottomOf="@id/button"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

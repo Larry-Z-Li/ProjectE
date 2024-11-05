@@ -3,127 +3,147 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/signup"
+    android:background="#D8BFD8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8BFD8"
     tools:context=".SignupActivity">
-
-    <TextView
-        android:id="@+id/header"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sub_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:background="#4B0082"
-        android:text="@string/headerName"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/header"
+        android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="back_arrow"
+            android:onClick="back"
+            android:paddingBottom="8dp"
+            android:src="@drawable/back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Study Buddy"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <TextView
         android:id="@+id/loginText"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="115dp"
+        android:gravity="center"
+        android:padding="16dp"
         android:text="Sign Up"
         android:textColor="@android:color/white"
         android:textSize="50sp"
-        android:gravity="center"
-        android:padding="16dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="115dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sub_parent" />
 
     <EditText
         android:id="@+id/usernameText"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/boxes_background"
         android:hint="Username"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:background="@drawable/boxes_background"
-        app:layout_constraintTop_toBottomOf="@id/loginText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginText" />
+
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/boxes_background"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:background="@drawable/boxes_background"
-        app:layout_constraintTop_toBottomOf="@id/usernameText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usernameText" />
+
     <EditText
         android:id="@+id/passwordTextConfirm"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/boxes_background"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:background="@drawable/boxes_background"
-        app:layout_constraintTop_toBottomOf="@id/passwordText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordText" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#D3D3D3"
+        android:padding="12dp"
+        android:text="Sign Up"
         android:textColor="#666666"
         android:textSize="16sp"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/passwordTextConfirm"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordTextConfirm" />
+
+
 
     <Spinner
         android:id="@+id/dropdownCourses"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/spinner_background"
+        android:hint="@string/spinner_prompt"
+        android:padding="12dp"
+        android:popupBackground="#FFFFFF"
         android:spinnerMode="dropdown"
         android:textColor="#666666"
         android:textSize="16sp"
-        android:padding="12dp"
-        android:popupBackground="#FFFFFF"
-        android:background="@drawable/spinner_background"
-        app:layout_constraintTop_toBottomOf="@id/loginButton"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:hint="@string/spinner_prompt"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/selectedCourses"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
-        android:textSize="16sp"
         android:padding="12dp"
+        android:textSize="16sp"
         app:flexWrap="wrap"
-        app:layout_constraintTop_toBottomOf="@id/dropdownCourses"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dropdownCourses" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GroupListPage">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sub_parent"
         android:layout_width="match_parent"
@@ -13,16 +14,31 @@
         android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="back_arrow"
+            android:onClick="back"
+            android:paddingBottom="8dp"
+            android:src="@drawable/back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/group_header_text"
             android:layout_width="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="20dp"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
             android:text="Groups"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="32sp"
+            app:layout_constraintStart_toEndOf="@id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -32,25 +48,25 @@
             android:src="@drawable/plant"
             app:layout_constraintStart_toEndOf="@id/group_header_text"
             app:layout_constraintTop_toTopOf="@id/group_header_text" />
+
         <Button
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/group_header_text"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/add_button"
             android:onClick="onNewGroupClick"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/group_header_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ListView
         android:id="@+id/group_list_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sub_parent"
         android:layout_marginTop="100dp"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sub_parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

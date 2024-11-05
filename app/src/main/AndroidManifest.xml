@@ -13,6 +13,7 @@
         android:theme="@style/Theme.ProjectE"
         tools:targetApi="31">
 
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -23,13 +24,15 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".NewSessionPage"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:exported="true">
-        </activity>
-
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".NewSessionPage"/>
+        <activity android:name=".SignupActivity"/>
+        <activity android:name=".GroupListPage" />
+        <activity android:name=".CalendarPage" />
+        <activity android:name=".EnrolledCoursesActivity" />
+        <activity android:name=".ChatPage" />
+        <activity android:name=".MemberListPage" />
+        <activity android:name=".NewGroupPage" />
+        <activity android:name=".NewGroupStartPage" />
         <activity android:name=".HomeScreenActivity" />
 
     </application>

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/homescreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreenActivity">
-
+    >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sub_parent"
         android:layout_width="match_parent"
@@ -21,74 +18,66 @@
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:contentDescription="back_arrow"
-            android:onClick="back"
             android:paddingBottom="8dp"
             android:src="@drawable/back_arrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="back"/>
 
         <TextView
-            android:id="@+id/header"
+            android:id="@+id/new_group_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Study Buddy"
+            android:layout_marginTop="40dp"
+            android:text="New Group"
             android:textSize="32sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <TextView
-        android:id="@+id/nameText"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-
-        android:text="@string/nameT"
-        android:textSize="25sp"
-        android:padding="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/sub_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="90dp"
-        />
-
-    <Button
-        android:id="@+id/myGroups"
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/groups"
-        android:backgroundTint="#D3D3D3"
-        android:textColor="#666666"
-        android:textSize="35sp"
-        android:padding="25dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="22sp"
+        android:text="Select Course"
+        app:layout_constraintTop_toBottomOf="@id/sub_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameText"
-
         />
+
+    <Spinner
+        android:id="@+id/dropdownCourses"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/spinner_background"
+        android:hint="@string/spinner_prompt"
+        android:padding="12dp"
+        android:popupBackground="#FFFFFF"
+        android:spinnerMode="dropdown"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label" />
 
     <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:backgroundTint="#D3D3D3"
-        android:textColor="#666666"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:layout_marginTop="270dp"
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Submit"
+        android:onClick="submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/myGroups"
+        app:layout_constraintTop_toBottomOf="@+id/dropdownCourses"
+        android:layout_marginTop="100dp"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
