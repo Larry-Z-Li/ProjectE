@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
@@ -57,6 +58,11 @@ public class PdfViewerActivity extends AppCompatActivity {
         } catch (IOException e) {
             Toast.makeText(this, "Error creating temporary file: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void back(View view)
+    {
+        finish();
     }
 }
 

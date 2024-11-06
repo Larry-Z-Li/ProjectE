@@ -1,31 +1,26 @@
 package com.example.projecte;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
 
 import com.example.projecte.components.PdfAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -35,15 +30,14 @@ import java.util.UUID;
 
 public class PDFView extends AppCompatActivity {
 
-    private static final int PICK_PDF_REQUEST = 1;
-    private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 100;
-
     private FirebaseStorage storage;
     private FirebaseFirestore firestore;
     private Button buttonUpload;
     private RecyclerView recyclerView;
     private PdfAdapter pdfAdapter;
     private List<PdfItem> pdfList;
+    private String resourceType;
+    private String groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,26 +50,35 @@ public class PDFView extends AppCompatActivity {
         buttonUpload = findViewById(R.id.button_upload);
         recyclerView = findViewById(R.id.recycler_view_pdfs);
 
+        Intent intent = getIntent();
+        resourceType = intent.getStringExtra("resourceType");
+        groupName = intent.getStringExtra("groupName");
+        if (resourceType == null) {
+            Toast.makeText(this, "Resource type not specified", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        else if (groupName == null) {
+            Toast.makeText(this, "Resource group not specified", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         pdfList = new ArrayList<>();
         pdfAdapter = new PdfAdapter(pdfList, new PdfAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(PdfItem pdfItem) {
-                // Handle PDF item click
-                Intent intent = new Intent(PDFView.this, PdfViewerActivity.class);
-                intent.putExtra("pdf_url", pdfItem.getUrl());
-                startActivity(intent);
+                Intent pdfIntent = new Intent(PDFView.this, PdfViewerActivity.class);
+                pdfIntent.putExtra("pdf_url", pdfItem.getUrl());
+                startActivity(pdfIntent);
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(pdfAdapter);
 
-        buttonUpload.setOnClickListener(view -> {
-            if (ContextCompat.checkSelfPermission(PDFView.this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(PDFView.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        PERMISSION_REQUEST_READ_EXTERNAL_STORAGE);
-            } else {
+        buttonUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 openFileChooser();
             }
         });
@@ -89,29 +92,21 @@ public class PDFView extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select PDF"), PICK_PDF_REQUEST);
     }
 
+    private static final int PICK_PDF_REQUEST = 1;
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_PDF_REQUEST && resultCode == Activity.RESULT_OK
-                && data != null && data.getData() != null) {
+        if (requestCode == PICK_PDF_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri pdfUri = data.getData();
-            uploadPDF(pdfUri);
+            promptForTitleAndUpload(pdfUri);
         } else {
             Toast.makeText(this, "No PDF selected", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void uploadPDF(Uri pdfUri) {
-        if (pdfUri == null) {
-            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        showTitleInputDialog(pdfUri);
-    }
-
-    private void showTitleInputDialog(Uri pdfUri) {
+    private void promptForTitleAndUpload(Uri pdfUri) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Enter PDF Title");
 
@@ -119,17 +114,18 @@ public class PDFView extends AppCompatActivity {
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         builder.setView(input);
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Upload", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String title = input.getText().toString().trim();
                 if (!title.isEmpty()) {
-                    proceedToUpload(pdfUri, title);
+                    uploadPDF(pdfUri, title);
                 } else {
                     Toast.makeText(PDFView.this, "Title cannot be empty", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -140,36 +136,45 @@ public class PDFView extends AppCompatActivity {
         builder.show();
     }
 
-    private void proceedToUpload(Uri pdfUri, String title) {
+    private void uploadPDF(Uri pdfUri, String title) {
         String fileName = "pdfs/" + UUID.randomUUID().toString() + ".pdf";
         StorageReference storageRef = storage.getReference().child(fileName);
+
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading PDF...");
+        progressDialog.show();
 
         storageRef.putFile(pdfUri)
                 .addOnSuccessListener(taskSnapshot -> {
                     storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                        PdfItem pdfItem = new PdfItem(title, uri.toString(), System.currentTimeMillis());
+                        PdfItem pdfItem = new PdfItem(title, uri.toString(), System.currentTimeMillis(), resourceType, groupName);
 
                         firestore.collection("pdfs")
                                 .add(pdfItem)
                                 .addOnSuccessListener(documentReference -> {
+                                    progressDialog.dismiss();
                                     Toast.makeText(PDFView.this, "PDF uploaded successfully", Toast.LENGTH_SHORT).show();
                                     loadPdfs(); // Refresh the list
                                 })
                                 .addOnFailureListener(e -> {
+                                    progressDialog.dismiss();
                                     Toast.makeText(PDFView.this, "Failed to upload metadata: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 });
                     }).addOnFailureListener(e -> {
+                        progressDialog.dismiss();
                         Toast.makeText(PDFView.this, "Failed to get download URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
                 })
                 .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
                     Toast.makeText(PDFView.this, "Failed to upload PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
-
     private void loadPdfs() {
         firestore.collection("pdfs")
+                .whereEqualTo("resourceType", resourceType)
+                .whereEqualTo("groupName", groupName)
                 .orderBy("timestamp", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -183,20 +188,5 @@ public class PDFView extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(PDFView.this, "Failed to load PDFs: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        openFileChooser();
-//        if (requestCode == PERMISSION_REQUEST_READ_EXTERNAL_STORAGE) {
-//            if (grantResults.length > 0
-//                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//            } else {
-//                Toast.makeText(this, "Permission required to select PDFs", Toast.LENGTH_SHORT).show();
-//            }
-//        }
     }
 }

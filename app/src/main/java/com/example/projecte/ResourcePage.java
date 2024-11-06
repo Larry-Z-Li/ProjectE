@@ -1,12 +1,13 @@
 package com.example.projecte;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.projecte.R;
+
 import com.example.projecte.components.ResourcePageAdapter;
 
 public class ResourcePage extends AppCompatActivity {
@@ -14,10 +15,10 @@ public class ResourcePage extends AppCompatActivity {
     private ListView resourceListView;
     private SearchView resourceSearchView;
     private ResourcePageAdapter adapter;
+    private String group;
 
-    // Sample data
     private String[] resourceTypes = {
-            "Books", "Articles", "Videos", "Podcasts",
+            "Books", "Articles", "Video Notes", "Podcast Notes",
             "Webinars", "eBooks", "Templates", "Guides",
             "Courses", "Workshops", "Infographics", "Reports"
     };
@@ -25,7 +26,8 @@ public class ResourcePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.resource_page); // Ensure correct layout file
+        setContentView(R.layout.resource_page);
+        group = getIntent().getStringExtra("groupName");
 
         resourceListView = findViewById(R.id.resource_list_page);
         resourceSearchView = findViewById(R.id.search_bar);
@@ -35,6 +37,17 @@ public class ResourcePage extends AppCompatActivity {
         resourceListView.setAdapter(adapter);
 
         setupSearchView();
+
+        resourceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedResourceType = resourceTypes[position];
+                Intent intent = new Intent(ResourcePage.this, PDFView.class);
+                intent.putExtra("resourceType", selectedResourceType);
+                intent.putExtra("groupName", group);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupSearchView() {
@@ -63,13 +76,8 @@ public class ResourcePage extends AppCompatActivity {
         });
     }
 
-    public void openResource(View view)
+    public void back(View view)
     {
-        Intent intent = new Intent(ResourcePage.this, PDFView.class);
-        startActivity(intent);
-    }
-
-    public void addResource(View view){
-
+        finish();
     }
 }

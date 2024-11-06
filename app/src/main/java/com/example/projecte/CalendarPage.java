@@ -176,12 +176,6 @@ public class CalendarPage extends AppCompatActivity {
                 });
 
     }
-
-    public void resources(View view) {
-
-        Intent intent = new Intent(CalendarPage.this, ResourcePage.class);
-        startActivity(intent);
-    }
     public void back(View view)
     {
         finish();

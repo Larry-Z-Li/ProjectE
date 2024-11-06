@@ -128,5 +128,12 @@ public class MemberListPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void resources(View view) {
+
+        Intent intent = new Intent(MemberListPage.this, ResourcePage.class);
+        intent.putExtra("groupName", group);
+        startActivity(intent);
+    }
+
 }
 
