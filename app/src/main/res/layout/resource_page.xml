@@ -49,16 +49,6 @@
             android:src="@drawable/gem"
             app:layout_constraintStart_toEndOf="@id/group_header_text"
             app:layout_constraintTop_toTopOf="@id/group_header_text" />
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/add_button"
-            android:onClick="onNewGroupClick"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/group_header_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
