@@ -5,7 +5,7 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8BFD8"
+    android:background="#EEE8F4"
     tools:context=".LoginActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sub_parent"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:text="Log In"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="50sp"
         android:gravity="center"
         android:padding="16dp"

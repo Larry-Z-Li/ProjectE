@@ -178,15 +178,12 @@ public class CalendarPage extends AppCompatActivity {
     }
 
     public void resources(View view) {
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//        intent.setType("*/*");
-//        startActivity(intent);
-        Intent intent = new Intent(CalendarPage.this, ResourcesPage.class);
+
+        Intent intent = new Intent(CalendarPage.this, ResourcePage.class);
         startActivity(intent);
-
     }
-
-    public void back(View view) {
+    public void back(View view)
+    {
         finish();
     }
 }

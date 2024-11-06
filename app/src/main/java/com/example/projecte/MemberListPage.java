@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -126,7 +127,6 @@ public class MemberListPage extends AppCompatActivity {
         intent.putExtra("group", group);
         startActivity(intent);
     }
-
 
 }
 

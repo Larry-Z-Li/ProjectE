@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/signup"
-    android:background="#D8BFD8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEE8F4"
     tools:context=".SignupActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sub_parent"
@@ -54,7 +54,7 @@
         android:gravity="center"
         android:padding="16dp"
         android:text="Sign Up"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
