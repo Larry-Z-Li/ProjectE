@@ -189,4 +189,13 @@ public class PDFView extends AppCompatActivity {
                     Toast.makeText(PDFView.this, "Failed to load PDFs: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
+    public void back(View view)
+    {
+        finish();
+    }
+
+    public void refresh(View view) {
+        loadPdfs();
+    }
 }
