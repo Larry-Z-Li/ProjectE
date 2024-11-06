@@ -45,6 +45,7 @@ public class CoursePageAdapter extends BaseAdapter {
         TextView tv = convertView.findViewById(R.id.courseName);
         tv.setText(courses.get(position));
 
+
         return convertView;
     }
 
