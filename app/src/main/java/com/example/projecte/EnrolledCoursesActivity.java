@@ -4,17 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.Toast;
 
+
+import java.util.ArrayList;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import com.example.projecte.components.CoursePageAdapter;
 
 import java.util.ArrayList;
 
 public class EnrolledCoursesActivity extends AppCompatActivity {
+
+    private ListView listView;
+    private CoursePageAdapter courseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,20 @@ public class EnrolledCoursesActivity extends AppCompatActivity {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
         }
         String username = (String)b.get("name");
+
+        listView = findViewById(R.id.listCourses);
+
+        ArrayList<String> testCourses = new ArrayList<>();
+        testCourses.add("CSCI 102");
+        testCourses.add("CSCI 103");
+        testCourses.add("CSCI 104");
+        testCourses.add("CSCI 201");
+        testCourses.add("CSCI 310");
+        testCourses.add("CSCI 350");
+
+
+        courseAdapter = new CoursePageAdapter(this, testCourses);
+        listView.setAdapter(courseAdapter);
 
         Button homeScreen = findViewById(R.id.HomePageButton);
         homeScreen.setOnClickListener(new View.OnClickListener() {
