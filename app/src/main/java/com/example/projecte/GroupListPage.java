@@ -45,14 +45,12 @@ public class GroupListPage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.group_list_page);
 
-//        Intent i = getIntent();
-//        Bundle b = i.getExtras();
-//        if (b == null) {
-//            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
-//        }
-//        username = (String) b.get("name");
-        username = "test";
-
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        if (b == null) {
+            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+        }
+        username = (String) b.get("name");
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference r = db.getReference();

@@ -40,16 +40,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.nameText);
         tv.setText(username);
 
-        Button groups = findViewById(R.id.myGroups);
-        groups.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreenActivity.this, GroupListPage.class);
-                intent.putExtra("name", username);
-                startActivity(intent);
-            }
-        });
-
 
         Button logoutHS = findViewById(R.id.logoutButton);
         logoutHS.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +55,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 Intent intent = new Intent(HomeScreenActivity.this, GroupListPage.class);
+                intent.putExtra("name",username);
                 startActivity(intent);
             }
         });
