@@ -27,11 +27,6 @@ import java.util.Objects;
 
 public class GroupListPage extends AppCompatActivity {
 
-//    String[] test = {"test1", "test2" ,"test3", "test4" ,"test5", "test6" ,"test7", "test8"
-//    ,"test9","test10","test11","test12","test13","test14","test15","test16","test17"};
-//    Boolean[] joined = {true, false, true, false, false, true, false, true , true, true,
-//            false,true, false, true , true, true, false};
-
     ArrayList<String> groups = new ArrayList<>();
     ArrayList<String> courses = new ArrayList<>();
     ArrayList<String> joinedGroups = new ArrayList<>();

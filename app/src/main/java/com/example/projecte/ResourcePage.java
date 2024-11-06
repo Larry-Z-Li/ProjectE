@@ -1,6 +1,8 @@
 package com.example.projecte;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,49 +27,49 @@ public class ResourcePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resource_page); // Ensure correct layout file
 
-        // Initialize views
         resourceListView = findViewById(R.id.resource_list_page);
         resourceSearchView = findViewById(R.id.search_bar);
 
-        // Initialize adapter
         adapter = new ResourcePageAdapter(this, resourceTypes);
 
-        // Set adapter to ListView
         resourceListView.setAdapter(adapter);
 
-        // Set up SearchView listeners
         setupSearchView();
     }
 
     private void setupSearchView() {
-        // Enable submitting queries
         resourceSearchView.setSubmitButtonEnabled(true);
 
-        // Listener for query text changes
         resourceSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Perform final search when query is submitted
                 adapter.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Perform search as text changes
                 adapter.getFilter().filter(newText);
                 return false;
             }
         });
 
-        // Optional: Listener for closing the search view
         resourceSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                // Reset the filter when search is closed
                 adapter.getFilter().filter("");
                 return false;
             }
         });
+    }
+
+    public void openResource(View view)
+    {
+        Intent intent = new Intent(ResourcePage.this, PDFView.class);
+        startActivity(intent);
+    }
+
+    public void addResource(View view){
+
     }
 }

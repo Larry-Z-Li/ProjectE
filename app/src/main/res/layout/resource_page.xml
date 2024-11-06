@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ResourcePage">
 
-    <!-- Header Section -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sub_parent"
         android:layout_width="match_parent"
@@ -62,7 +61,6 @@
             app:layout_constraintTop_toTopOf="@id/group_header_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Search Label -->
     <TextView
         android:id="@+id/label"
         android:layout_width="wrap_content"
