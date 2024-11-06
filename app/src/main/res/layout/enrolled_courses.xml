@@ -5,56 +5,41 @@
     android:id="@+id/enrolledCourses"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8BFD8"
+    android:background="#EEE8F4"
     tools:context=".EnrolledCoursesActivity">
 
-    <TextView
-        android:id="@+id/header"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sub_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:background="#4B0082"
-        android:text="@string/headerName"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/header"
+        android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/enrolledCoursesText"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:text="@string/enrolledTitle"
-        android:textColor="@android:color/white"
-        android:textSize="35sp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="115dp"
-        />
+        <TextView
+            android:id="@+id/new_group_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enrolledTitle"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
         android:id="@+id/listCourses"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:text="COURSES"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/enrolledCoursesText"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toBottomOf="@id/sub_parent"
+        app:layout_constraintBottom_toTopOf="@id/HomePageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/HomePageButton"
-        android:layout_marginTop="115dp"
         />
 
     <Button
@@ -66,7 +51,7 @@
         android:textColor="#666666"
         android:textSize="16sp"
         android:padding="12dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="170dp"
@@ -82,7 +67,7 @@
         android:textColor="#666666"
         android:textSize="16sp"
         android:padding="12dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         android:layout_marginStart="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
