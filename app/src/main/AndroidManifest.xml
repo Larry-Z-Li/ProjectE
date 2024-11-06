@@ -23,8 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EnrolledCoursesActivity" />
         <activity android:name=".SignupActivity" />
+        <activity android:name=".EnrolledCoursesActivity" />
         <activity android:name=".GroupListPage"/>
         <activity android:name=".NewGroupPage"/>
         <activity android:name=".NewGroupStartPage"/>
