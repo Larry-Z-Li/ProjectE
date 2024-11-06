@@ -5,7 +5,6 @@
     android:id="@+id/enrolledCourses"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE8F4"
     tools:context=".EnrolledCoursesActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,21 +20,21 @@
             android:id="@+id/new_group_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enrolledTitle"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:text="Courses"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ListView
         android:id="@+id/listCourses"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:dividerHeight="1dp"
-        android:layout_marginTop="80dp"
         app:layout_constraintTop_toBottomOf="@id/sub_parent"
         app:layout_constraintBottom_toTopOf="@id/HomePageButton"
         app:layout_constraintStart_toStartOf="parent"

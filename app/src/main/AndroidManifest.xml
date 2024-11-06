@@ -15,15 +15,15 @@
 
 
         <activity
-            android:name=".EnrolledCoursesActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
+        <activity android:name=".EnrolledCoursesActivity" />
         <activity android:name=".GroupListPage"/>
         <activity android:name=".NewGroupPage"/>
         <activity android:name=".NewGroupStartPage"/>

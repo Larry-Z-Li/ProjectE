@@ -119,7 +119,6 @@ public class ChatPage extends AppCompatActivity {
                     .child("message").setValue(et.getText().toString());
             et.setText("");
         } else {
-
             r.child("courses").child(course).child("groups").child(group).child("messages").child(names.size() + "")
                     .child("name").setValue(username);
             r.child("courses").child(course).child("groups").child(group).child("messages").child(names.size() + "")

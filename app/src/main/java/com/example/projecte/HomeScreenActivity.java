@@ -24,11 +24,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.homescreen_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.homescreen), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
