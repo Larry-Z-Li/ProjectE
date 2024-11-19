@@ -3,6 +3,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -22,13 +23,22 @@ public class LogInTest {
     public ActivityScenarioRule<LoginActivity> activityRule = new ActivityScenarioRule<>(LoginActivity.class);
 
     @Test
-    public void testCorrectLogin()
-    {
-        onView(withId(R.id.username)).perform(typeText("userTest"));
-        onView(withId(R.id.username)).perform(typeText("userPassword"));
+    public void testCorrectLogin() throws InterruptedException {
+        onView(withId(R.id.usernameText)).perform(typeText("userTest"));
+        onView(withId(R.id.passwordText)).perform(typeText("passwordTest"));
         onView(withId(R.id.loginButton)).perform(click());
-
-        onView(withText("Courses")).check(matches(isDisplayed()));
+        Thread.sleep(2000);
+        onView(withId(R.id.listCourses)).check(matches(isDisplayed()));
         System.out.println("Login Successful");
+    }
+
+    @Test
+    public void incorrectCorrectLogin() throws InterruptedException {
+        onView(withId(R.id.usernameText)).perform(typeText("userTestWrong"));
+        onView(withId(R.id.passwordText)).perform(typeText("passwordTestWrong"));
+        onView(withId(R.id.loginButton)).perform(click());
+        Thread.sleep(2000);
+        onView(withId(R.id.passwordText)).check(matches(hasErrorText("Password incorrect")));
+        System.out.println("Login not Successful");
     }
 }
