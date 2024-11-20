@@ -26,26 +26,40 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class SignUpTest {
+public class CoursesTest {
 
     @Rule
     public ActivityScenarioRule<SignupActivity> signupActivityRule =
             new ActivityScenarioRule<>(SignupActivity.class);
 
     @Test
-    public void testSingup() throws InterruptedException {
-        //onView(withId(R.id.signoutButton)).perform(click());
-        //onView(withId(R.id.signupButton)).perform(click());
-        onView(withId(R.id.usernameText)).perform(typeText("signUpTestUser"));
-        onView(withId(R.id.passwordText)).perform(typeText("signUpTestPass"));
-        onView(withId(R.id.passwordTextConfirm)).perform(typeText("signUpTestPass"));
+    public void testCoursesSingup() throws InterruptedException {
+        onView(withId(R.id.usernameText)).perform(typeText("CoursesTestUser5"));
+        onView(withId(R.id.passwordText)).perform(typeText("CoursesTestPass"));
+        onView(withId(R.id.passwordTextConfirm)).perform(typeText("CoursesTestPass"));
+        onView(withId(R.id.dropdownCourses)).perform(click());
+        onData(anything())
+                .atPosition(1)
+                .perform(click());
+        onView(withId(R.id.dropdownCourses)).perform(click());
+        onData(anything())
+                .atPosition(1)
+                .perform(click());
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
                 .atPosition(1)
                 .perform(click());
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
-        onView(withId(R.id.listCourses)).check(matches(isDisplayed()));
-        System.out.println("Signup Successful");
+        onData(is("CSCI301"))
+                .inAdapterView(withId(R.id.listCourses))
+                .check(matches(isDisplayed()));
+        onData(is("BISC210"))
+                .inAdapterView(withId(R.id.listCourses))
+                .check(matches(isDisplayed()));
+        onData(is("HIST101"))
+                .inAdapterView(withId(R.id.listCourses))
+                .check(matches(isDisplayed()));
+        System.out.println("Courses Displayed Successful");
     }
 }
