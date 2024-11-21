@@ -50,6 +50,7 @@
             app:layout_constraintTop_toTopOf="@id/group_header_text" />
 
         <Button
+            android:id="@+id/addSign"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
