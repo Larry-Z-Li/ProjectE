@@ -25,6 +25,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Random;
+
 @RunWith(AndroidJUnit4.class)
 public class SignUpTest {
 
@@ -34,9 +36,10 @@ public class SignUpTest {
 
     @Test
     public void testSingup() throws InterruptedException {
-        //onView(withId(R.id.signoutButton)).perform(click());
-        //onView(withId(R.id.signupButton)).perform(click());
-        onView(withId(R.id.usernameText)).perform(typeText("signUpTestUser"));
+        Random random = new Random();
+        int randomInt = random.nextInt(10000);
+        String username = "signUpTestUser" + randomInt;
+        onView(withId(R.id.usernameText)).perform(typeText(username));
         onView(withId(R.id.passwordText)).perform(typeText("signUpTestPass"));
         onView(withId(R.id.passwordTextConfirm)).perform(typeText("signUpTestPass"));
         onView(withId(R.id.dropdownCourses)).perform(click());
