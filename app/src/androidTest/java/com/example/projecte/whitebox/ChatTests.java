@@ -28,6 +28,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
 import androidx.test.runner.AndroidJUnit4;
 
 @RunWith(AndroidJUnit4.class)
@@ -51,14 +52,13 @@ public class ChatTests {
     @After
     public void after() {
         Intents.release();
-        }
+        r.child("users").child(username).child("messages").child(name2).setValue("");
+        r.child("users").child(name2).child("messages").child(username).setValue("");
+
+    }
 
     @Test
     public void DMTest() throws InterruptedException {
-//        r.child("users").child(username).child("messages").child(name2).removeValue();
-//        r.child("users").child(name2).child("messages").child(username).removeValue();
-
-
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), ChatPage.class);
         intent.putExtra("name", "GroupTest1");
         intent.putExtra("name2", "GroupTest");
@@ -67,8 +67,7 @@ public class ChatTests {
         Thread.sleep(2000);
         chatActivity.onActivity(activity -> {
             EditText et = (EditText) activity.findViewById(R.id.edit_gchat_message);
-            for(int i = 0; i < 20; i++)
-            {
+            for (int i = 0; i < 20; i++) {
                 et.setText("test");
                 activity.send(new View(ApplicationProvider.getApplicationContext()));
             }
