@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     passwordIN.requestFocus();
                     return;
                 }
-                reference.child("users").addValueEventListener(new ValueEventListener() {
+                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(username))
