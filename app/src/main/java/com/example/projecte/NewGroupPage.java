@@ -132,8 +132,6 @@ public class NewGroupPage extends AppCompatActivity {
                                 if(error)
                                     break;
                                 if (Objects.equals(k.getKey(), et.getText().toString())) {
-                                    TextView error_text = (TextView) findViewById(R.id.submit_error);
-                                    error_text.setText("Group name already exists");
                                     error = true;
                                 }
                             }
@@ -153,10 +151,10 @@ public class NewGroupPage extends AppCompatActivity {
                         DatabaseReference tr = r.child("users").child(user).child("groups").push();
                         tr.setValue(et.getText().toString());
                     }
-
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                    TextView error_text = (TextView) findViewById(R.id.submit_error);
+                    error_text.setText("Group name already exists");
                 }
 
             }

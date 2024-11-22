@@ -34,21 +34,28 @@ public class GroupListPage extends AppCompatActivity {
 
     String username;
     ListView listView;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference r = db.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.group_list_page);
-
-        Intent i = getIntent();
-        Bundle b = i.getExtras();
-        if (b == null) {
-            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+        if(username == null)
+        {
+            Intent i = getIntent();
+            Bundle b = i.getExtras();
+            if (b == null) {
+                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+            }
+            username = (String) b.get("name");
         }
-        username = (String) b.get("name");
+        getCourses();
 
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference r = db.getReference();
+    }
+    public void getCourses()
+    {
         r.child("users").child(username).child("courses").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -57,67 +64,7 @@ public class GroupListPage extends AppCompatActivity {
                     courses.add(s.getValue(String.class));
                 }
 
-                r.child("courses").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        groups = new ArrayList<>();
-                        for(DataSnapshot i: snapshot.getChildren())
-                        {
-                            Toast.makeText(getApplicationContext(), ""+courses.size(), Toast.LENGTH_SHORT).show();
-
-                            if(courses.contains(i.getKey()))
-                            {
-
-                                for(DataSnapshot j: i.getChildren())
-                                {
-                                    if(Objects.equals(j.getKey(), "groups"))
-                                    {
-                                        for(DataSnapshot k: j.getChildren())
-                                        {
-                                            groups.add(k.getKey());
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        r.child("users").child(username).child("groups").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                joinedGroups = new ArrayList<>();
-                                for(DataSnapshot i: snapshot.getChildren())
-                                {
-                                    joinedGroups.add(i.getValue(String.class));
-                                }
-                                listView = (ListView) findViewById(R.id.group_list_page);
-                                groupListAdapter = new GroupListAdapter(getApplicationContext(),groups, joinedGroups,username);
-                                listView.setAdapter(groupListAdapter);
-                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                        if(view.findViewById(R.id.group_list_join_button).getVisibility() == View.INVISIBLE)
-                                        {
-                                            TextView tv = (TextView)view.findViewById(R.id.group_list_name);
-                                            Intent intent = new Intent(GroupListPage.this,MemberListPage.class);
-                                            intent.putExtra("name",username);
-                                            intent.putExtra("group",tv.getText());
-                                            startActivity(intent);
-                                        }
-                                    }
-                                });
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(GroupListPage.this, "uhoh", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(GroupListPage.this, "uhoh", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                getGroups();
             }
 
             @Override
@@ -125,10 +72,74 @@ public class GroupListPage extends AppCompatActivity {
 
             }
         });
+    }
+    public void getGroups() {
+        r.child("courses").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                groups = new ArrayList<>();
+                for(DataSnapshot i: snapshot.getChildren())
+                {
 
+                    if(courses.contains(i.getKey()))
+                    {
 
+                        for(DataSnapshot j: i.getChildren())
+                        {
+                            if(Objects.equals(j.getKey(), "groups"))
+                            {
+                                for(DataSnapshot k: j.getChildren())
+                                {
+                                    groups.add(k.getKey());
+                                }
+                            }
+                        }
+                    }
+                }
+                getJoinedGroups();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(GroupListPage.this, "uhoh", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    public void getJoinedGroups()
+    {
+        r.child("users").child(username).child("groups").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                joinedGroups = new ArrayList<>();
+                for(DataSnapshot i: snapshot.getChildren())
+                {
+                    joinedGroups.add(i.getValue(String.class));
+                }
+                listView = (ListView) findViewById(R.id.group_list_page);
+                groupListAdapter = new GroupListAdapter(getApplicationContext(),groups, joinedGroups,username);
+                listView.setAdapter(groupListAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        if(view.findViewById(R.id.group_list_join_button).getVisibility() == View.INVISIBLE)
+                        {
+                            TextView tv = (TextView)view.findViewById(R.id.group_list_name);
+                            Intent intent = new Intent(GroupListPage.this,MemberListPage.class);
+                            intent.putExtra("name",username);
+                            intent.putExtra("group",tv.getText());
+                            startActivity(intent);
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(GroupListPage.this, "uhoh", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     public void onNewGroupClick(View view)
     {
         Intent intent = new Intent(GroupListPage.this,NewGroupStartPage.class);

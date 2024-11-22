@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.2"
+espressoIntents = "3.0.2"
 highlightableCalendarView = "1.0.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -18,6 +19,7 @@ firebaseStorage = "21.0.1"
 junitJupiter = "5.8.1"
 
 [libraries]
+espresso-intents = { module = "com.android.support.test.espresso:espresso-intents", version.ref = "espressoIntents" }
 highlightable-calendar-view = { module = "com.varunbarad:highlightable-calendar-view", version.ref = "highlightableCalendarView" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
