@@ -27,7 +27,7 @@ import android.widget.Toast;
 public class ChatPage extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<>(Arrays.asList("Joe", "Bob", "Carol", "Joe",
             "Bob", "Joe", "Joe", "Bob", "Carol", "Bob", "Carol", "Joe", "Carol", "Carol", "Joe", "Joe"));
-    ArrayList<String> messages = new ArrayList<>(Arrays.asList("test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"
+    public ArrayList<String> messages = new ArrayList<>(Arrays.asList("test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"
             , "test9", "test10", "test11", "test12", "test13", "test14", "test15", "test16666666666987970960896t09696990"));
     String username, name2, group, course, type;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
