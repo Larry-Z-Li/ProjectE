@@ -4,8 +4,8 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
 import java.util.Random;
 
 @RunWith(AndroidJUnit4.class)
-public class newGroupDisplayedTest {
+public class newGroupAddedTest {
 
     @Rule
     //opening java activity file so that it runs that page
@@ -35,9 +35,13 @@ public class newGroupDisplayedTest {
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
         onView(withId(R.id.HomePageButton)).perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.myGroups)).perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.addSign)).perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.button)).perform(click());
+        Thread.sleep(2000);
         Random random = new Random();
         int randomInt = random.nextInt(10000);
         String groupName = "groupTest" + randomInt;
@@ -48,7 +52,15 @@ public class newGroupDisplayedTest {
         onData(anything())
                 .atPosition(2)
                 .perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.button)).perform(click());
+        Thread.sleep(2000);
+        onView(withId(R.id.HomePageButton)).perform(click());
+        Thread.sleep(2000);
+        onView(withId(R.id.myGroups)).perform(click());
+        Thread.sleep(2000);
+        onView(withId(R.id.group_list_page))
+                .check(matches(hasDescendant(withText(groupName))));
         System.out.println("Username in Page Successful");
     }
 
