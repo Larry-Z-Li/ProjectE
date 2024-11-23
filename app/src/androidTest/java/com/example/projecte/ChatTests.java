@@ -38,6 +38,7 @@ public class ChatTests {
     public void after() {
         Intents.release();
     }
+
     @Test
     public void DMTest() throws InterruptedException {
 

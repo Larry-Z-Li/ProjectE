@@ -6,7 +6,6 @@ plugins {
 android {
     namespace 'com.example.projecte'
     compileSdk 34
-
     defaultConfig {
         applicationId "com.example.projecte"
         minSdk 24
@@ -15,6 +14,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
     buildTypes {
@@ -39,19 +41,30 @@ dependencies {
     implementation libs.recyclerview
     implementation libs.firebase.firestore
     implementation libs.firebase.storage
-    testImplementation libs.junit
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
-    testImplementation libs.junit.jupiter
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
     implementation libs.timerangepicker
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation libs.material.calendarview
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation libs.espresso.intents
+    testImplementation libs.ext.junit
+    testImplementation libs.espresso.core
+    testImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation 'androidx.test:runner:1.5.2'
+    testImplementation 'androidx.test:rules:1.5.0'
+    testImplementation 'androidx.test.ext:junit:1.1.5'
+    testImplementation "junit:junit:4.13.2"
+
+    testImplementation "androidx.test:core-ktx:1.5.0"
+    testImplementation "androidx.test.ext:junit-ktx:1.1.5"
+
+    testImplementation libs.espresso.intents
+
 }
