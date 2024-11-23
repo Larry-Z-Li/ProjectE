@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 
-public class groupTests {
+public class joinGroupTests {
     ArrayList<String> joinedGroups;
     ArrayList<String> avaliableGroups;
 
