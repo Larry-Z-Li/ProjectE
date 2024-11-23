@@ -53,7 +53,7 @@ public class ChatTests {
         intended(hasComponent(MemberListPage.class.getName()));
 
         Thread.sleep(2000);
-        onData(anything()).inAdapterView(withId(R.id.list)).atPosition(index).
+        onData(anything()).inAdapterView(withId(R.id.list)).atPosition(0).
                 perform(click());
 
         intended(hasComponent(ChatPage.class.getName()));
