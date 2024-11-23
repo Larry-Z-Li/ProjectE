@@ -56,7 +56,7 @@ public class GroupListPage extends AppCompatActivity {
     }
     public void getCourses()
     {
-        r.child("users").child(username).child("courses").addListenerForSingleValueEvent(new ValueEventListener() {
+        r.child("users").child(username).child("courses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren())
@@ -74,7 +74,7 @@ public class GroupListPage extends AppCompatActivity {
         });
     }
     public void getGroups() {
-        r.child("courses").addListenerForSingleValueEvent(new ValueEventListener() {
+        r.child("courses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 groups = new ArrayList<>();
@@ -108,7 +108,7 @@ public class GroupListPage extends AppCompatActivity {
 
     public void getJoinedGroups()
     {
-        r.child("users").child(username).child("groups").addListenerForSingleValueEvent(new ValueEventListener() {
+        r.child("users").child(username).child("groups").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 joinedGroups = new ArrayList<>();

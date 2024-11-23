@@ -33,9 +33,14 @@ import org.junit.Test;
 public class GroupListTests {
 
     public ActivityScenario<GroupListPage> groupListActivity;
+
+    DatabaseReference r = FirebaseDatabase.getInstance().getReference();
+    String name = "GroupTest";
     @Before
     public void before() {
         Intents.init();
+        r.child("users").child(name).child("groups").child(name2).setValue("");
+
     }
     @After
     public void after(){
@@ -45,7 +50,7 @@ public class GroupListTests {
     @Test
     public void joinGroupTest() throws InterruptedException {
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), GroupListPage.class);
-        intent.putExtra("name", "GroupTest");
+        intent.putExtra("name", name);
         groupListActivity = ActivityScenario.launch(intent);
         Thread.sleep(2000);
         onData(anything()).inAdapterView(withId(R.id.group_list_page)).atPosition(1).
