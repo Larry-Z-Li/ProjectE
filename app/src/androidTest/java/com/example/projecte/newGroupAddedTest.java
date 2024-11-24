@@ -55,10 +55,6 @@ public class newGroupAddedTest {
         Thread.sleep(2000);
         onView(withId(R.id.button)).perform(click());
         Thread.sleep(2000);
-        onView(withId(R.id.HomePageButton)).perform(click());
-        Thread.sleep(2000);
-        onView(withId(R.id.myGroups)).perform(click());
-        Thread.sleep(2000);
         onView(withId(R.id.group_list_page))
                 .check(matches(hasDescendant(withText(groupName))));
         System.out.println("Username in Page Successful");
