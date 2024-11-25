@@ -110,7 +110,7 @@ public class PdfUploadTests {
         }
         return filtered;
     }
-    
+
     private boolean validatePdfItem(PdfItem item) {
         if (item.getTitle() == null || item.getTitle().isEmpty()) {
             return false;
