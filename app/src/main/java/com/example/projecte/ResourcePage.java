@@ -1,5 +1,6 @@
 package com.example.projecte;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class ResourcePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resource_page);
+        EdgeToEdge.enable(this);
         group = getIntent().getStringExtra("groupName");
 
         resourceListView = findViewById(R.id.resource_list_page);

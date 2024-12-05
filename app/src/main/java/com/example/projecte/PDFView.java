@@ -1,5 +1,6 @@
 package com.example.projecte;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,6 +43,7 @@ public class PDFView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.resource_pdf_viewer);
 
         storage = FirebaseStorage.getInstance();
@@ -57,8 +59,7 @@ public class PDFView extends AppCompatActivity {
             Toast.makeText(this, "Resource type not specified", Toast.LENGTH_SHORT).show();
             finish();
             return;
-        }
-        else if (groupName == null) {
+        } else if (groupName == null) {
             Toast.makeText(this, "Resource group not specified", Toast.LENGTH_SHORT).show();
             finish();
             return;
@@ -190,8 +191,7 @@ public class PDFView extends AppCompatActivity {
                 });
     }
 
-    public void back(View view)
-    {
+    public void back(View view) {
         finish();
     }
 

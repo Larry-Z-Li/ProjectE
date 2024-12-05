@@ -1,5 +1,6 @@
 package com.example.projecte;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -22,6 +23,7 @@ public class PdfViewerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pdf_viewer);
 
         pdfView = findViewById(R.id.pdfView);
