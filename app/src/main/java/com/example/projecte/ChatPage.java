@@ -89,7 +89,6 @@ public class ChatPage extends AppCompatActivity {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 Log.d("tag","hiii");
                                 TextView tv = (TextView) view.findViewById(R.id.message);
-                                Toast.makeText(ChatPage.this, "hi", Toast.LENGTH_SHORT).show();
                                 if (tv.getTypeface().isItalic()) {
                                     Intent intent = new Intent(ChatPage.this, PdfViewerActivity.class);
                                     intent.putExtra("pdf_url", messages.get(position).substring(9));
@@ -124,7 +123,6 @@ public class ChatPage extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Log.d("tag","hiii");
                             TextView tv = (TextView) view.findViewById(R.id.message);
-                            Toast.makeText(ChatPage.this, "hi", Toast.LENGTH_SHORT).show();
                             if (tv.getTypeface().isItalic()) {
                                 Intent intent = new Intent(ChatPage.this, PdfViewerActivity.class);
                                 intent.putExtra("pdf_url", messages.get(position).substring(9));
