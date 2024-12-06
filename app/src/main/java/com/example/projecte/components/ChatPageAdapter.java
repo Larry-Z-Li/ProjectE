@@ -81,6 +81,9 @@ public class ChatPageAdapter extends BaseAdapter {
             TextView tv = (TextView) view.findViewById(R.id.name);
             tv.setText(names.get(i));
             TextView tv2 = (TextView) view.findViewById(R.id.message);
+            if (messages.get(i) == null) {
+                return view;
+            }
             if (messages.get(i).startsWith("resource:")) {
                 tv2.setText("Click to view resource");
                 tv2.setTypeface(null, Typeface.BOLD_ITALIC);
