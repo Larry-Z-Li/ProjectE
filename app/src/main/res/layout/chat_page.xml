@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/beige"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,6 +60,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="20dp">
+        <View android:id="@+id/attach"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/add_button"
+            android:backgroundTint="@color/grey"
+            android:onClick="openFileChooser"
+            />
 
         <EditText
             android:id="@+id/edit_gchat_message"
@@ -66,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/attach"
             android:layout_toStartOf="@+id/button_gchat_send"
             android:autofillHints="Enter Message"
             android:background="@android:color/transparent"
