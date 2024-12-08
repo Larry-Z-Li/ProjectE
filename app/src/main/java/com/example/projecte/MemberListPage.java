@@ -50,6 +50,8 @@ public class MemberListPage extends AppCompatActivity {
         }
         username = (String) b.get("name");
         group = (String) b.get("group");
+        TextView tv = (TextView) findViewById(R.id.new_group_header);
+        tv.setText(group);
 
         DatabaseReference r = FirebaseDatabase.getInstance().getReference();
         r.child("courses").addListenerForSingleValueEvent(new ValueEventListener() {
