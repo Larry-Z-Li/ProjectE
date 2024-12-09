@@ -52,7 +52,7 @@ public class SignUpTest {
         onView(withId(R.id.passwordTextConfirm)).perform(typeText("signUpTestPass"));
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
-                .atPosition(1)
+                .atPosition(0)
                 .perform(click());
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
@@ -68,7 +68,7 @@ public class SignUpTest {
         onView(withId(R.id.passwordTextConfirm)).perform(typeText("test"));
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
-                .atPosition(1)
+                .atPosition(0)
                 .perform(click());
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
