@@ -52,7 +52,7 @@ public class MemberListPage extends AppCompatActivity {
         username = (String) b.get("name");
         group = (String) b.get("group");
         TextView tv = (TextView) findViewById(R.id.new_group_header);
-        if (group.length() > 15) {
+        if (group.length() > 12) {
             tv.setTextSize(20);
         }
         tv.setText(group);

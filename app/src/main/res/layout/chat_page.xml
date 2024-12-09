@@ -87,12 +87,14 @@
         <Button
             android:id="@+id/button_gchat_send"
             android:layout_width="100dp"
+            android:layout_marginRight="10dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
-            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:backgroundTint="@color/grey"
             android:text="Send"
             android:onClick="send"
-            android:textColor="@color/grey" />
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
