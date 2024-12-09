@@ -41,7 +41,6 @@
             android:layout_height="50dp"
             android:layout_marginStart="7dp"
             android:contentDescription="champagne"
-
             android:src="@drawable/champagne"
             app:layout_constraintStart_toEndOf="@id/new_group_header"
             app:layout_constraintTop_toTopOf="@id/new_group_header" />

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -51,6 +52,9 @@ public class MemberListPage extends AppCompatActivity {
         username = (String) b.get("name");
         group = (String) b.get("group");
         TextView tv = (TextView) findViewById(R.id.new_group_header);
+        if (group.length() > 15) {
+            tv.setTextSize(20);
+        }
         tv.setText(group);
 
         DatabaseReference r = FirebaseDatabase.getInstance().getReference();
