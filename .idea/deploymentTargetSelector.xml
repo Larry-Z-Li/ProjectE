@@ -8,10 +8,7 @@
       <SelectionState runConfigName="SignUpTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="usernameInPageTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="newGroupAddedTest">
+      <SelectionState runConfigName="testSingup()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
