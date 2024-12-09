@@ -46,20 +46,23 @@ public class CoursesTest {
         onData(anything())
                 .atPosition(1)
                 .perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
                 .atPosition(1)
                 .perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
                 .atPosition(1)
                 .perform(click());
+        Thread.sleep(2000);
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
-        onData(is("CSCI301"))
+        onData(is("BISC210"))
                 .inAdapterView(withId(R.id.listCourses))
                 .check(matches(isDisplayed()));
-        onData(is("BISC210"))
+        onData(is("CSCI301"))
                 .inAdapterView(withId(R.id.listCourses))
                 .check(matches(isDisplayed()));
         onData(is("HIST101"))
