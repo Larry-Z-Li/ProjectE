@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.util.Log;
 
 import android.graphics.Color;
 
@@ -66,6 +67,9 @@ public class SignupActivity extends AppCompatActivity {
                     courses.add(s.getKey());
 
                 }
+
+                Log.d("SignupActivity", "Courses from Firebase: " + courses.toString());
+
                 Spinner dropdownCourses = findViewById(R.id.dropdownCourses);
                 FlexboxLayout selectedCoursesAttribute = findViewById(R.id.selectedCourses); // Ensure this is FlexboxLayout
 
