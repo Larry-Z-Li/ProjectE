@@ -36,6 +36,7 @@
             app:layout_constraintStart_toEndOf="@id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
         <ImageView
+            android:id="@+id/champagne_icon"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginStart="7dp"
@@ -44,14 +45,18 @@
             android:src="@drawable/champagne"
             app:layout_constraintStart_toEndOf="@id/new_group_header"
             app:layout_constraintTop_toTopOf="@id/new_group_header" />
-        <TextView
+        <Button
+            android:id="@+id/resource_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:text="Resources"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="@id/back_arrow"
+            android:padding="10dp"
+            android:backgroundTint="@color/grey"
+            android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/new_group_header"
             android:onClick="resources"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
