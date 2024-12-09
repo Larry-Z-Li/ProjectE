@@ -24,6 +24,7 @@ import static java.util.EnumSet.allOf;
 
 import android.view.View;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import org.hamcrest.Matcher;
@@ -48,11 +49,15 @@ public class SignUpTest {
         int randomInt = random.nextInt(10000);
         String username = "signUpTestUser" + randomInt;
         onView(withId(R.id.usernameText)).perform(typeText(username));
+        Thread.sleep(500);
         onView(withId(R.id.passwordText)).perform(typeText("signUpTestPass"));
+        Thread.sleep(500);
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.passwordTextConfirm)).perform(typeText("signUpTestPass"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
-                .atPosition(0)
+                .atPosition(1)
                 .perform(click());
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
@@ -64,11 +69,14 @@ public class SignUpTest {
     public void testDuplicateSignup() throws InterruptedException {
 
         onView(withId(R.id.usernameText)).perform(typeText("larry"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.passwordText)).perform(typeText("test"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.passwordTextConfirm)).perform(typeText("test"));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dropdownCourses)).perform(click());
         onData(anything())
-                .atPosition(0)
+                .atPosition(1)
                 .perform(click());
         onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
